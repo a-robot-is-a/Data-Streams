@@ -1,3 +1,5 @@
-#pragma once
+#ifndef W_STREAM_H
+#define W_STREAM_H
 
-void write(char src[]);
+int write(char src[]);
+#endif

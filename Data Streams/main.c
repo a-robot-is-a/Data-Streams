@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-17
+version:2020-03-18
 */
 
 #include <stdlib.h>
@@ -11,10 +11,10 @@ version:2020-03-17
 
 int main(int argc, char** argv) {
 
-	char src[40];
+	char src[32];
 
 	printf("Eingabe: ");
-	fgets(src, 40, stdin);
+	fgets(src, 32, stdin);
 
 	write(src);
 

@@ -1,7 +1,7 @@
 /*
 w_stream.c
 author: Peter Hartmann
-version: 2020-03-17
+version: 2020-03-18
 */
 
 
@@ -12,8 +12,8 @@ version: 2020-03-17
 #include "w_stream.h"
 
 
-void write(char src[]) {
-	
+int write(char src[]) {
+
 	int i = 0;
 
 	int counter = 0;
@@ -54,4 +54,6 @@ void write(char src[]) {
 	{
 		printf("fclose() failed\n");
 	}
+
+	return 0;
 }
