@@ -6,6 +6,7 @@ version:2020-03-18
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "w_stream.h"
 #include "r_stream.h"
 
