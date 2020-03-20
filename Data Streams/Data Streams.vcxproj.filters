@@ -24,12 +24,18 @@
     <ClCompile Include="w_stream.c">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="getTime.c">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="r_stream.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="w_stream.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="getTime.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

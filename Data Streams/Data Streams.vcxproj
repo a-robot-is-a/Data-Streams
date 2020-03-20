@@ -143,11 +143,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="getTime.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="r_stream.c" />
     <ClCompile Include="w_stream.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="getTime.h" />
     <ClInclude Include="r_stream.h" />
     <ClInclude Include="w_stream.h" />
   </ItemGroup>

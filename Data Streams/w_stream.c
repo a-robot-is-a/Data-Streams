@@ -12,7 +12,7 @@ version: 2020-03-18
 #include "w_stream.h"
 
 
-int write(char src[]) {
+int write(char *time) {
 
 	int i = 0;
 
@@ -41,12 +41,12 @@ int write(char src[]) {
 
 	//strcpy(dest, src);
 
-	for (i = 0; src[i] != '\0'; i++)
+	for (i = 0; time[i] != '\0'; i++)
 	{
 		counter = i;
 	}
 
-	fwrite(src, sizeof(char), counter, fileHandle);
+	fwrite(time, sizeof(char), counter, fileHandle);
 
 	// Close the file
 
