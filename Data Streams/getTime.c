@@ -42,14 +42,17 @@ char *get() {
 int ten(){
 
 	time_t start, stop;
-
 	double diff;
 
 	printf("The first 10\n");
 
-	while((diff = difftime(stop = time(NULL), start)) != 10)
+	start = time(NULL);
+	
+	while ((diff = difftime(stop = time(NULL), start)) != 10)
+
 	{
 		printf("%lf Sekunden\n", diff);
 	}
+
 	return EXIT_SUCCESS;
 }
