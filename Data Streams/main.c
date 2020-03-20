@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-18
+version:2020-03-21
 */
 
 #include <stdlib.h>
@@ -12,9 +12,11 @@ version:2020-03-18
 
 int main(int argc, char** argv) {
 
-	write(get());	// get the time and save it in the data.txt
+	//write(get());	// get the time and save it in the data.txt
 
-	read();
+	//read();
+
+	ten();
 
 	system("pause");
 

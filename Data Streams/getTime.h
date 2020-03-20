@@ -3,4 +3,6 @@
 
 char *get();
 
+int ten();
+
 #endif

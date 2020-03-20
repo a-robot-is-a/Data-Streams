@@ -1,7 +1,7 @@
 /*
 getTime.c
 author: Peter Hartmann
-version: 2020-03-20
+version: 2020-03-21
 */
 
 #include <stdlib.h>
@@ -37,4 +37,19 @@ char *get() {
 	(void)printf("Current time is %s", c_time_string);
 
 	return c_time_string;
+}
+
+int ten(){
+
+	time_t start, stop;
+
+	double diff;
+
+	printf("The first 10\n");
+
+	while((diff = difftime(stop = time(NULL), start)) != 10)
+	{
+		printf("%lf Sekunden\n", diff);
+	}
+	return EXIT_SUCCESS;
 }
