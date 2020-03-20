@@ -1,7 +1,7 @@
 /*
 getTime.c
 author: Peter Hartmann
-version: 2020-03-21
+version: 2020-03-20
 */
 
 #include <stdlib.h>
@@ -44,15 +44,12 @@ int ten(){
 	time_t start, stop;
 	double diff;
 
-	printf("The first 10\n");
+	printf("The first 10 seconds\n");
 
 	start = time(NULL);
-	
-	while ((diff = difftime(stop = time(NULL), start)) != 10)
 
-	{
-		printf("%lf Sekunden\n", diff);
-	}
+	while ((diff = difftime(stop = time(NULL), start)) != 10);
+	printf("%.lf seconds\n", diff);
 
 	return EXIT_SUCCESS;
 }

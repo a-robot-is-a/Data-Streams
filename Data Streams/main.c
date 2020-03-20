@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-21
+version:2020-03-20
 */
 
 #include <stdlib.h>
