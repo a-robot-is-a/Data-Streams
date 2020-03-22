@@ -1,7 +1,7 @@
 /*
 w_stream.c
 author: Peter Hartmann
-version: 2020-03-18
+version: 2020-03-22
 */
 
 
@@ -13,13 +13,6 @@ version: 2020-03-18
 
 
 int write(char *time) {
-
-	int i = 0;
-
-	int counter = 0;
-
-	//char dest[MAX];
-
 
 	FILE* fileHandle;
 
@@ -33,21 +26,15 @@ int write(char *time) {
 	}
 
 
-	// Write a string into the file
+	// Write into the file
 
-	//memset(dest, '\0', sizeof(dest));
+	//char buffer[32];
 
-	//strcpy(src, "Nachrichten");
+	setbuf(fileHandle, NULL);
 
-	//strcpy(dest, src);
+	fputs(time, fileHandle);
 
-	for (i = 0; time[i] != '\0'; i++)
-	{
-		counter = i;
-	}
-
-	fwrite(time, sizeof(char), counter, fileHandle);
-
+	
 	// Close the file
 
 	if (fclose(fileHandle))

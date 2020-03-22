@@ -12,11 +12,11 @@ version:2020-03-20
 
 int main(int argc, char** argv) {
 
-	//write(get());	// get the time and save it in the data.txt
+	write(get());	// get the time and save it in the data.txt
 
-	//read();
+	read();
 
-	ten();
+	//ten();
 
 	system("pause");
 
