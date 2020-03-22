@@ -14,16 +14,9 @@ version: 2020-03-18
 
 int write(char src[]) {
 
-	int i = 0;
+	FILE *fileHandle;
 
-	int counter = 0;
-
-	//char dest[MAX];
-
-
-	FILE* fileHandle;
-
-	// Create file
+	// Create file if not exists
 
 	if ((fileHandle = fopen("data", "a")) == 0)
 	{
@@ -33,20 +26,14 @@ int write(char src[]) {
 	}
 
 
-	// Write a string into the file
+	// Write into the file
 
-	//memset(dest, '\0', sizeof(dest));
+	//char buffer[32];
 
-	//strcpy(src, "Nachrichten");
+	setbuf(fileHandle, NULL);
 
-	//strcpy(dest, src);
+	fputs(src, fileHandle);
 
-	for (i = 0; src[i] != '\0'; i++)
-	{
-		counter = i;
-	}
-
-	fwrite(src, sizeof(char), counter, fileHandle);
 
 	// Close the file
 
