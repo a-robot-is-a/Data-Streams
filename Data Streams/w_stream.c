@@ -1,7 +1,7 @@
 /*
 w_stream.c
 author: Peter Hartmann
-version: 2020-03-18
+version: 2020-03-22
 */
 
 

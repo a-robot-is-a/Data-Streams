@@ -1,12 +1,11 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-18
+version:2020-03-24
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 #include "w_stream.h"
 #include "r_stream.h"
 
@@ -24,5 +23,4 @@ int main(int argc, char** argv) {
 	system("pause");
 
 	return 0;
-
 }
