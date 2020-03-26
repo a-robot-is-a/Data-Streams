@@ -1,5 +1,5 @@
 #ifndef W_STREAM_H
 #define W_STREAM_H
 
-int write(char src[]);
+int write(char val);
 #endif

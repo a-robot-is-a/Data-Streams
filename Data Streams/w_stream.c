@@ -1,9 +1,8 @@
 /*
 w_stream.c
 author: Peter Hartmann
-version: 2020-03-22
+version: 2020-03-26
 */
-
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,13 +11,13 @@ version: 2020-03-22
 #include "w_stream.h"
 
 
-int write(char *time) {
+int write(char val) {
 
-	FILE* fileHandle;
+	FILE *fileHandle;
 
 	// Create file
 
-	if ((fileHandle = fopen("data", "a")) == 0)
+	if ((fileHandle = fopen("/sys/class/gpio/gpio4/value", "w")) == 0)
 	{
 		printf("fopen() failed\n");
 
@@ -28,13 +27,11 @@ int write(char *time) {
 
 	// Write into the file
 
-	//char buffer[32];
+	printf("Writing %c in file.\n", val);
 
-	setbuf(fileHandle, NULL);
+	fprintf(fileHandle, "%c", val);
 
-	fputs(time, fileHandle);
 
-	
 	// Close the file
 
 	if (fclose(fileHandle))

@@ -1,25 +1,23 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-20
+version:2020-03-26
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "w_stream.h"
-#include "r_stream.h"
-#include "getTime.h"
 
 int main(int argc, char** argv) {
 
-	write(get());	// get the time and save it in the data.txt
+	char val;
 
-	read();
+	printf("LED Eingabe 0/1: ");
+	scanf("%c", &val);
 
-	//ten();
+	write(val);	// LED on GPIO 4 on/off
 
 	system("pause");
 
 	return 0;
-
 }
