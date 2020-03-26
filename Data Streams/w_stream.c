@@ -17,7 +17,7 @@ int write(char val) {
 
 	// Create file
 
-	if ((fileHandle = fopen("/sys/class/gpio/gpio4/value", "w")) == 0)
+	if ((fileHandle = fopen("/sys/class/gpio/gpio4", "w")) == 0)
 	{
 		printf("fopen() failed\n");
 
