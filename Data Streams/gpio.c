@@ -1,7 +1,7 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-03-26
+version: 2020-03-29
 */
 
 #include <stdlib.h>
@@ -58,11 +58,13 @@ int set(char val) {
 	return 0;
 }
 
-int light(char val){
+int light(char pin, char val){
 
 	//  open the stream
 
-	if ((file = fopen("/sys/class/gpio/gpio4/value", "w")) == 0)
+	char *path = "/sys/class/gpio/gpio4/value";
+
+	if ((file = fopen(path, "w")) == 0)
 	{ printf("fopen() value failed\n"); return 0;}
 
 	// write the value
@@ -71,7 +73,7 @@ int light(char val){
 
 	// Close the stream
 
-	if (fclose(file)) { printf("fclose() value failed\n"); }
+	fflush(file);
 
 	return 0;
 }
