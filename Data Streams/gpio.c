@@ -31,12 +31,9 @@ int set(char val) {
 
 	fprintf(file, "%c", val);
 
-	// Close the stream
+	// clear the stream
 
-	if (fclose(file))
-	{
-		printf("fclose() failed\n");
-	}
+	fflush(file);
 
 	// Set gpio as output
 
@@ -69,9 +66,8 @@ int light(char pin, char val){
 	char dest[] = "/gpioX/value";
 	dest[5] = pin;
 	strcat(path, dest);
-	printf("%s", path);
 
-/*	if ((file = fopen(path, "w")) == 0)
+	if ((file = fopen(path, "w")) == 0)
 	{ printf("fopen() value failed\n"); return 0;}
 
 	// write the value
@@ -81,7 +77,7 @@ int light(char pin, char val){
 	// Close the stream
 
 	fflush(file);
-*/
+
 	return 0;
 }
 
