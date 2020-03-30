@@ -12,6 +12,10 @@ version: 2020-03-29
 
 FILE *file;
 
+char path[27] = "/sys/class/gpio";
+
+int i;
+
 int set(char val) {
 
 	// Create file gpio file
@@ -62,9 +66,12 @@ int light(char pin, char val){
 
 	//  open the stream
 
-	char *path = "/sys/class/gpio/gpio4/value";
+	char dest[] = "/gpioX/value";
+	dest[5] = pin;
+	strcat(path, dest);
+	printf("%s", path);
 
-	if ((file = fopen(path, "w")) == 0)
+/*	if ((file = fopen(path, "w")) == 0)
 	{ printf("fopen() value failed\n"); return 0;}
 
 	// write the value
@@ -74,7 +81,7 @@ int light(char pin, char val){
 	// Close the stream
 
 	fflush(file);
-
+*/
 	return 0;
 }
 
