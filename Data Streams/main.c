@@ -1,26 +1,37 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-30
+version:2020-03-31
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "gpio.h"
+
+#define DIGITS 4
+#define PINS	8
 
 int main(int argc, char** argv) {
 
-	char pin;
-	char val;
+	char pattern[DIGITS][PINS] = {
 
-	printf("Pin_num Light_val: \n");
-	scanf("%c %c", &pin, &val);
+		{1,1,0,1,0,0,0,0},
+		{1,1,0,1,1,1,0,0},
+		{1,1,1,0,1,1,1,0},
+		{1,1,0,0,1,1,0,0},
+	};
 
-	//set('4');	// Prepare GPIO (4) for work
+	int i, j;
 
-	light(pin,val);	// LED on GPIO 4 on/off
+	printf("Pin:2:3:4:14:15:18:23:24");
+	for (i = 0; i < DIGITS; i++)
+	{
+		printf("\nDigit%c:", i);
 
-	//unset('4');	// Unexport GPIO (4)
+		for (j = 0; j < PINS; j++)
+		{
+			printf("%c", pattern[i][j]);
+		}
+	}
 
 	return 0;
 }
