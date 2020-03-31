@@ -12,7 +12,7 @@ version:2020-03-31
 
 int main(int argc, char** argv) {
 
-	char pattern[DIGITS][PINS] = {
+	int pattern[DIGITS][PINS] = {
 
 		{1,1,0,1,0,0,0,0},
 		{1,1,0,1,1,1,0,0},
@@ -25,11 +25,11 @@ int main(int argc, char** argv) {
 	printf("Pin:2:3:4:14:15:18:23:24");
 	for (i = 0; i < DIGITS; i++)
 	{
-		printf("\nDigit%c:", i);
+		printf("\nDigit%i:", i);
 
 		for (j = 0; j < PINS; j++)
 		{
-			printf("%c", pattern[i][j]);
+			printf("%i:", pattern[i][j]);
 		}
 	}
 
