@@ -11,26 +11,26 @@ version: 2020-03-26
 #include "w_stream.h"
 
 
-int write(char val) {
+int write(char *time) {
 
 	FILE *fileHandle;
 
 	// Create file
 
-	if ((fileHandle = fopen("/sys/class/gpio/gpio4", "w")) == 0)
+	if ((fileHandle = fopen("data", "a")) == 0)
 	{
 		printf("fopen() failed\n");
 
 		return 0;
 	}
 
-
 	// Write into the file
 
-	printf("Writing %c in file.\n", val);
+	//char buffer[32];
 
-	fprintf(fileHandle, "%c", val);
+	setbuf(fileHandle, NULL);
 
+	fputs(time, fileHandle);
 
 	// Close the file
 

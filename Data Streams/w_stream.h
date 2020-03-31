@@ -1,5 +1,5 @@
 #ifndef W_STREAM_H
 #define W_STREAM_H
 
-int write(char val);
+int write(char *time);
 #endif
