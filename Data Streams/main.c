@@ -1,41 +1,39 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-31
+version:2020-04-01
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 
 #define DIGITS 4
-#define PINS	8
+#define PINS	8 + 8	// + 8 for the comma
 
 int main(int argc, char** argv) {
 
 	int i, j;
 
-	int pattern[DIGITS][PINS] = {
+	char pattern[DIGITS][PINS] = {
 
-		{0,0,0,1,0,1,1,1},
-		{0,0,1,1,0,1,1,1},
-		{0,1,1,1,1,1,1,0},
-		{0,0,1,1,0,1,1,0},
+		"0,0,0,1,0,1,1,1",
+		"0,0,1,1,0,1,1,1",
+		"0,1,1,1,1,1,1,0",
+		"0,0,1,1,0,1,1,0",
 	};
 
-	printf("Pin:2:3:4:14:15:18:23:24");
+	printf("Pin,2,3,4,14,15,18,23,24");
 	for (i = 0; i < DIGITS; i++)
 	{
-		printf("\nDigit%i:", i);
+		printf("\nDigit%i,", i);
 
 		for (j = 0; j < PINS; j++)
 		{
-			printf("%i:", pattern[i][j]);
+			printf("%c", pattern[i][j]);
 		}
 	}
 
 	// Make file
-
-	const char *pins = "Pin:2:3:4:14:15:18:23:24";
 
 	FILE *stream;
 
@@ -48,12 +46,23 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	setbuf(stream, NULL);
+	// ToDo: Write to file
+
+	char *pins = "Pin,2,3,4,14,15,18,23,24";
+
+	for (i = 0; i < DIGITS; i++)
+	{
+		printf("\nDigit%i,", i);
+
+		for (j = 0; j < PINS; j++)
+		{
+			printf("%c", pattern[i][j]);
+		}
+	}
 
 	fputs(pins, stream);
 
-	// ToDo: try char buffer[][] ? - for pattern
-
+	// Close the stream
 
 	if(fclose(stream))
 	{
