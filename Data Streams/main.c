@@ -48,19 +48,20 @@ int main(int argc, char** argv) {
 
 	// ToDo: Write to file
 
-	char *pins = "Pin,2,3,4,14,15,18,23,24";
+	char header[] = "Pin,2,3,4,14,15,18,23,24";
+	char buf[PINS*DIGITS];
 
-	for (i = 0; i < DIGITS; i++)
+	for(i = 0; i < DIGITS; i++)
 	{
-		printf("\nDigit%i,", i);
-
 		for (j = 0; j < PINS; j++)
 		{
-			printf("%c", pattern[i][j]);
+			buf[i] = pattern[i][j];
 		}
 	}
 
-	fputs(pins, stream);
+	fwrite(header, sizeof(char), sizeof(header), stream);
+
+	fwrite(buf, sizeof(char), sizeof(buf), stream);
 
 	// Close the stream
 
