@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-04-02
+version:2020-04-04
 */
 
 #include <stdlib.h>
@@ -42,11 +42,15 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	// ToDo: Write to file
+	// Write to file
 
-	//fwrite(header, sizeof(char), sizeof(header), stream);
+	fputs(header, stream);
 
-//	fwrite(buf, sizeof(char), sizeof(buf), stream);
+	for(i = 0; i < DIGITS; i++)
+	{
+		fputs("\nDigit,", stream);
+		fputs(pattern[i], stream);
+	}
 
 	// Close the stream
 
