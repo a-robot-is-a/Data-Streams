@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-03-30
+version:2020-04-05
 */
 
 #include <stdlib.h>
@@ -16,9 +16,9 @@ int main(int argc, char** argv) {
 	printf("Pin_num Light_val: \n");
 	scanf("%c %c", &pin, &val);
 
-	//set('4');	// Prepare GPIO (4) for work
+	set(val);	// Prepare GPIO (4) for work
 
-	light(pin,val);	// LED on GPIO 4 on/off
+	//light(pin,val);	// LED on GPIO 4 on/off
 
 	//unset('4');	// Unexport GPIO (4)
 

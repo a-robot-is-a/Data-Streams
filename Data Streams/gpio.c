@@ -1,12 +1,11 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-03-29
+version: 2020-04-05
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
 #include "gpio.h"
 
@@ -18,7 +17,7 @@ int i;
 
 int set(char val) {
 
-	// Create file gpio file
+	// Create gpio file
 
 	if ((file = fopen("/sys/class/gpio/export", "w")) == 0)
 	{
@@ -31,11 +30,8 @@ int set(char val) {
 
 	fprintf(file, "%c", val);
 
-	// clear the stream
 
-	fflush(file);
-
-	// Set gpio as output
+/*	// Set gpio as output
 
 	if ((file = fopen("/sys/class/gpio/gpio4/direction", "w")) == 0)
 	{
@@ -51,7 +47,7 @@ int set(char val) {
 	setbuf(file, NULL);
 
 	fputs(dir, file);
-
+*/
 	// Close the stream
 
 	if (fclose(file)) {printf("fclose() failed\n");}
