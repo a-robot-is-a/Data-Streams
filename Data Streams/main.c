@@ -6,11 +6,13 @@ version:2020-04-06
 
 #include <stdlib.h>
 #include <stdio.h>
-//#include "gpio.h"
+#include "gpio.h"
 
 int main(int argc, char** argv) {
 
 	int i;
+
+	char buffer[21];
 
 	FILE *stream;
 
@@ -21,19 +23,14 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	char c;
-
-	while( (c = fgetc(stream)) != ',')
-	{
-		putchar(c);
-	}
+	fgets(buffer, 21, stream);	// get all pin num
 
 	if(fclose(stream))
 	{
 		puts("fclose() failed.");
 	}
 
-	//create(val);	// create GPIO file
+	create(buffer);	// create GPIO file
 
 	//light(pin,val);	// LED on GPIO 4 on/off
 

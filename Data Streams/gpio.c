@@ -15,7 +15,7 @@ char path[27] = "/sys/class/gpio";
 
 int i;
 
-int create(char val) {
+int create(char buffer[]) {
 
 	// Create gpio file
 
@@ -28,7 +28,10 @@ int create(char val) {
 
 	// Write the file
 
-	fprintf(file, "%c", val);
+	//fprintf(file, "%c", val);
+
+	// buffer test
+	fprintf(stdout, "%s", buffer);
 
 
 /*	// Set gpio as output
@@ -55,7 +58,7 @@ int create(char val) {
 	return 0;
 }
 
-int light(char pin, char val){
+/*int light(char pin, char val){
 
 	//  open the stream
 
@@ -75,7 +78,7 @@ int light(char pin, char val){
 	fflush(file);
 
 	return 0;
-}
+}*/
 
 int unset(char val){
 
