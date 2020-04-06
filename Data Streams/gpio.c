@@ -1,7 +1,7 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-04-05
+version: 2020-04-06
 */
 
 #include <stdlib.h>
@@ -15,13 +15,13 @@ char path[27] = "/sys/class/gpio";
 
 int i;
 
-int set(char val) {
+int create(char val) {
 
 	// Create gpio file
 
 	if ((file = fopen("/sys/class/gpio/export", "w")) == 0)
 	{
-		printf("fopen() failed\n");
+		puts("fopen() failed");
 
 		return 0;
 	}
@@ -50,7 +50,7 @@ int set(char val) {
 */
 	// Close the stream
 
-	if (fclose(file)) {printf("fclose() failed\n");}
+	if (fclose(file)) {puts("fclose() failed");}
 
 	return 0;
 }

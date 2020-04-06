@@ -1,22 +1,39 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-04-05
+version:2020-04-06
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "gpio.h"
+//#include "gpio.h"
 
 int main(int argc, char** argv) {
 
-	char pin;
-	char val;
+	int i;
 
-	printf("Pin_num Light_val: \n");
-	scanf("%c %c", &pin, &val);
+	FILE *stream;
 
-	set(val);	// Prepare GPIO (4) for work
+	if((stream = fopen("led.csv", "r")) == NULL)
+	{
+		puts("fopen() failed.");
+
+		return EXIT_FAILURE;
+	}
+
+	char c;
+
+	while( (c = fgetc(stream)) != ',')
+	{
+		putchar(c);
+	}
+
+	if(fclose(stream))
+	{
+		puts("fclose() failed.");
+	}
+
+	//create(val);	// create GPIO file
 
 	//light(pin,val);	// LED on GPIO 4 on/off
 
