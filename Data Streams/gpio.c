@@ -1,7 +1,7 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-04-06
+version: 2020-04-07
 */
 
 #include <stdlib.h>
@@ -28,10 +28,27 @@ int create(char buffer[]) {
 
 	// Write the file
 
-	//fprintf(file, "%c", val);
+	char digit[] = {0,0};
 
-	// buffer test
-	fprintf(stdout, "%s", buffer);
+	int counter = 0;
+
+	setbuf(file, NULL);
+
+	for(i = 0; i < 20; i++)
+	{
+		if(buffer[i] != ',')
+		{
+			digit[counter] = buffer[i];
+
+			counter = 1;
+		}
+		else
+		{
+			counter = 0;
+
+			fputs(digit, file);	// transmit at ','
+		}
+	}
 
 
 /*	// Set gpio as output
