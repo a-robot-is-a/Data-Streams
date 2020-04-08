@@ -1,17 +1,17 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-04-07
+version: 2020-04-08
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 #include "gpio.h"
 
 FILE *file;
 
-char path[27] = "/sys/class/gpio";
+//char path[35] = "/sys/class/gpio";
 
 int i;
 
@@ -50,15 +50,26 @@ int create(char buffer[]) {
 		}
 	}
 
+	// Close the stream
 
-/*	// Set gpio as output
+	if (fclose(file)) {puts("fclose() failed");}
 
-	if ((file = fopen("/sys/class/gpio/gpio4/direction", "w")) == 0)
-	{
-		printf("fopen() failed\n");
+	return 0;
+}
 
-		return 0;
-	}
+int direc(char pin){
+
+	// Set gpio as output
+	char path[] = "/sys/class/gpio";
+
+	char dest[] = "/gpioX/direction";
+
+	dest[5] = pin;
+
+	strcat(path, dest);
+
+	if ((file = fopen(path, "w")) == 0)
+	{printf("fopen() failed\n");return 0;}
 
 	// Write in the file
 
@@ -67,13 +78,14 @@ int create(char buffer[]) {
 	setbuf(file, NULL);
 
 	fputs(dir, file);
-*/
-	// Close the stream
 
-	if (fclose(file)) {puts("fclose() failed");}
+	// close the stream
+
+	if(fclose(file)){puts("fclose() direc() failed");} // maybe fflush()
 
 	return 0;
 }
+
 
 /*int light(char pin, char val){
 
@@ -95,7 +107,7 @@ int create(char buffer[]) {
 	fflush(file);
 
 	return 0;
-}*/
+}
 
 int unset(char val){
 
@@ -114,3 +126,4 @@ int unset(char val){
 
 	return 0;
 }
+*/

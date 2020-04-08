@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-04-06
+version:2020-04-08
 */
 
 #include <stdlib.h>
@@ -30,7 +30,14 @@ int main(int argc, char** argv) {
 		puts("fclose() failed.");
 	}
 
-	create(buffer);	// create GPIO file
+	//create(buffer);	// create GPIO file
+
+
+	char pin;
+	puts("Enter pin num:");
+	scanf("%c", &pin);
+
+	direc(pin);	// set gpio as output
 
 	//light(pin,val);	// LED on GPIO 4 on/off
 
