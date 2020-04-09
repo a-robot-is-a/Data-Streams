@@ -4,6 +4,6 @@
 int create(char buffer[]);
 int direc(char pin);
 int light(char pin, char val);
-int unset(char val);
+int unset(char buffer[]);
 
 #endif

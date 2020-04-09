@@ -1,7 +1,7 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-04-08
+version: 2020-04-09
 */
 
 #include <stdlib.h>
@@ -11,9 +11,11 @@ version: 2020-04-08
 
 FILE *file;
 
-//char path[35] = "/sys/class/gpio";
-
 int i;
+
+char digit[] = {0,0};
+
+int counter = 0;
 
 int create(char buffer[]) {
 
@@ -25,12 +27,6 @@ int create(char buffer[]) {
 
 		return 0;
 	}
-
-	// Write the file
-
-	char digit[] = {0,0};
-
-	int counter = 0;
 
 	setbuf(file, NULL);
 
@@ -44,13 +40,11 @@ int create(char buffer[]) {
 		}
 		else
 		{
-			counter = 0;
+			counter = 0;	// transmit at ','
 
-			fputs(digit, file);	// transmit at ','
+			fputs(digit, file);
 		}
 	}
-
-	// Close the stream
 
 	if (fclose(file)) {puts("fclose() failed");}
 
@@ -108,8 +102,8 @@ int direc(char pin){
 
 	return 0;
 }
-
-int unset(char val){
+*/
+int unset(char buffer[]){
 
 	// Open the stream
 
@@ -118,12 +112,28 @@ int unset(char val){
 
 	// Close the pin
 
-	fprintf(file, "%c", val);
+	setbuf(file, NULL);
+
+	for(i = 0; i < 20; i++)
+	{
+		if(buffer[i] != ',')
+		{
+			digit[counter] = buffer[i];
+
+			counter = 1;
+		}
+		else
+		{
+			counter = 0;
+
+			fputs(digit, file);
+		}
+	}
 
 	// Close the stream
 
-	if (fclose(file)) { printf("fclose() unexport failed\n"); }
+	if (fclose(file)) { puts("fclose() unexport failed"); }
 
 	return 0;
 }
-*/
+
