@@ -1,7 +1,7 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-04-09
+version: 2020-04-13
 */
 
 #include <stdlib.h>
@@ -30,7 +30,7 @@ int create(char buffer[]) {
 
 	setbuf(file, NULL);
 
-	for(i = 0; i < 20; i++)
+	for(i = 0; i < 22; i++)
 	{
 		if(buffer[i] != ',')
 		{
@@ -40,9 +40,12 @@ int create(char buffer[]) {
 		}
 		else
 		{
-			counter = 0;	// transmit at ','
+			if(buffer[i] != '\0')
+			{
+				counter = 0;	// transmit at ','
 
-			fputs(digit, file);
+				fputs(digit, file);
+			}
 		}
 	}
 
@@ -75,7 +78,7 @@ int direc(char pin){
 
 	// close the stream
 
-	if(fclose(file)){puts("fclose() direc() failed");} // maybe fflush()
+	if(fclose(file)){puts("fclose() direc() failed");}
 
 	return 0;
 }
@@ -114,7 +117,7 @@ int unset(char buffer[]){
 
 	setbuf(file, NULL);
 
-	for(i = 0; i < 20; i++)
+	for(i = 0; i < 22; i++)
 	{
 		if(buffer[i] != ',')
 		{
@@ -124,9 +127,12 @@ int unset(char buffer[]){
 		}
 		else
 		{
-			counter = 0;
+			if(buffer[i] != '\0')
+			{
+				counter = 0;
 
-			fputs(digit, file);
+				fputs(digit, file);
+			}
 		}
 	}
 

@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-04-09
+version:2020-04-13
 */
 
 #include <stdlib.h>
@@ -10,11 +10,9 @@ version:2020-04-09
 
 int main(int argc, char** argv) {
 
-	int i;
-
-	char buffer[21];
-
 	FILE *stream;
+
+	char buffer[22];
 
 	if((stream = fopen("led.csv", "r")) == NULL)
 	{
@@ -23,7 +21,7 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	fgets(buffer, 21, stream);	// get all pin num from csv file
+	fgets(buffer, 22, stream);	// get all pin num from csv file
 
 	if(fclose(stream))
 	{
