@@ -1,7 +1,7 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-04-14
+version: 2020-04-17
 */
 
 #include <stdlib.h>
@@ -38,14 +38,11 @@ int create(char buffer[]) {
 
 			counter = 1;
 		}
-		else
+		else if(buffer[i] != '\0')
 		{
-			if(buffer[i] != '\0')
-			{
-				counter = 0;	// transmit at ','
+			counter = 0;	// transmit at ','
 
-				fputs(digit, file);
-			}
+			fputs(digit, file);
 		}
 	}
 
@@ -53,20 +50,18 @@ int create(char buffer[]) {
 
 	return 0;
 }
-
+/*
 int direc(char buffer[]){
 
 	char path[] = "/sys/class/gpio";
 
-	char dest[] = "/gpioXX";
+	char dest[] = "/gpio";
 
 	char destAdd[] = "/direction";
 
 	// Set gpio as output
 
 	char dir[] = "out";
-
-	setbuf(file, NULL);
 
 	for(i = 0; i < 22; i++)
 	{
@@ -76,51 +71,34 @@ int direc(char buffer[]){
 
 			counter = 1;
 		}
-		else
+		else if(buffer[i] != '\0')
 		{
-			if(buffer[i] != '\0')
+			for(i = 0; digit[i] != '0'; i++)
 			{
-				for(i = 0; i < 3; i++)
-				{
-					dest[5 + i] = digit[i];
-				}
-
-				if(dest[6] != 'X')
-				{
-					counter = 0;
-
-					strcat(path, dest);
-
-					strcat(path, destAdd);
-
-					if ((file = fopen(path, "w")) == 0)
-						{printf("fopen() failed\n");return 0;}
-
-
-					// Write in the file
-
-					fputs(dir, file);
-
-					// close the stream
-
-					if(fclose(file)){puts("fclose() direc() failed");}
-				}
-				else
-				{
-					//ToDo
-
-				}
+				strcat(path, digit[i]);
 			}
 
+			counter = 0;
+
+			strcat(path, destAdd);
+
+			if ((file = fopen(path, "w")) == 0)
+				{printf("fopen() failed\n");return 0;}
+
+			setbuf(file, NULL);
+
+			// Write in the file
+
+			fputs(dir, file);
+
+			// close the stream
+
+			if(fclose(file)){puts("fclose() direc() failed");}
 		}
 	}
-
-
-
 	return 0;
 }
-
-
+*/
 /*int light(char pin, char val){
 
 	//  open the stream
@@ -162,14 +140,11 @@ int unset(char buffer[]){
 
 			counter = 1;
 		}
-		else
+		else if(buffer[i] != '\0')
 		{
-			if(buffer[i] != '\0')
-			{
-				counter = 0;
+			counter = 0;
 
-				fputs(digit, file);
-			}
+			fputs(digit, file);
 		}
 	}
 
