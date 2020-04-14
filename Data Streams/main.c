@@ -1,7 +1,7 @@
 /*
 Data streams and information psychology
 author: Peter Hartmann
-version:2020-04-13
+version:2020-04-14
 */
 
 #include <stdlib.h>
@@ -30,16 +30,9 @@ int main(int argc, char** argv) {
 
 	create(buffer);	// create GPIO file
 
-/*
-	char pin;
-	puts("Enter pin num:");
-	scanf("%c", &pin);
+	//direc(buffer);	// set gpio as output
 
-	direc(pin);	// set gpio as output
-*/
 	//light(pin,val);	// LED on GPIO 4 on/off
-
-
 
 	//unset(buffer);	// unexport GPIO
 

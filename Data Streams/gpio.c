@@ -1,7 +1,7 @@
 /*
 gpio.c
 author: Peter Hartmann
-version: 2020-04-13
+version: 2020-04-14
 */
 
 #include <stdlib.h>
@@ -54,31 +54,68 @@ int create(char buffer[]) {
 	return 0;
 }
 
-int direc(char pin){
+int direc(char buffer[]){
 
-	// Set gpio as output
 	char path[] = "/sys/class/gpio";
 
-	char dest[] = "/gpioX/direction";
+	char dest[] = "/gpioXX";
 
-	dest[5] = pin;
+	char destAdd[] = "/direction";
 
-	strcat(path, dest);
-
-	if ((file = fopen(path, "w")) == 0)
-	{printf("fopen() failed\n");return 0;}
-
-	// Write in the file
+	// Set gpio as output
 
 	char dir[] = "out";
 
 	setbuf(file, NULL);
 
-	fputs(dir, file);
+	for(i = 0; i < 22; i++)
+	{
+		if(buffer[i] != ',');
+		{
+			digit[counter] = buffer[i];
 
-	// close the stream
+			counter = 1;
+		}
+		else
+		{
+			if(buffer[i] != '\0')
+			{
+				for(i = 0; i < 3; i++)
+				{
+					dest[5 + i] = digit[i];
+				}
 
-	if(fclose(file)){puts("fclose() direc() failed");}
+				if(dest[6] != 'X')
+				{
+					counter = 0;
+
+					strcat(path, dest);
+
+					strcat(path, destAdd);
+
+					if ((file = fopen(path, "w")) == 0)
+						{printf("fopen() failed\n");return 0;}
+
+
+					// Write in the file
+
+					fputs(dir, file);
+
+					// close the stream
+
+					if(fclose(file)){puts("fclose() direc() failed");}
+				}
+				else
+				{
+					//ToDo
+
+				}
+			}
+
+		}
+	}
+
+
 
 	return 0;
 }
